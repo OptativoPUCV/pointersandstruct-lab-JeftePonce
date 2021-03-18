@@ -12,6 +12,7 @@ y en c almacena el valor de la suma de a más b.
 */
 
 void suma(int a, int b, int * c) {
+  
   *c = a + b;
 }
 
@@ -19,14 +20,14 @@ void suma(int a, int b, int * c) {
 Esta función suma los N primeros números del arreglo a
 */
 int sumaN(int a[], int N) {
-    int i;
-    int tot = 0;
+  int i;
+  int tot = 0;
 
-    for(i = 0; i < N; i++) {
-      tot += a[i];
-    }
+  for(i = 0; i < N; i++) {
+    tot += a[i];
+  }
 
-    return tot;
+  return tot;
 }
 
 /*
@@ -57,13 +58,15 @@ typedef struct {
 
 
 Persona* crearPersona(char nombre[], char rut[], int edad) {
-   Persona* fursona = (Persona*) malloc(sizeof(Persona)); 
 
-  strcpy(fursona->nombre, nombre);
-  strcpy(fursona->rut, rut);
-  fursona->edad = edad;
+  Persona* persona = (Persona*) malloc(sizeof(Persona)); 
 
-   return fursona;
+  strcpy(persona->nombre, nombre);
+  strcpy(persona->rut, rut);
+  persona->edad = edad;
+
+  return persona;
+
 }
 
 /*
@@ -75,18 +78,22 @@ correspondiente para el arreglo con `n` datos
 inicializados en 0 y luego retorna el vector creado.
 */
 typedef struct {
+
    int * datos; // arreglo dinámico
    int capacidad; // capacidad del arreglo
+   
 } Vector;
 
-Vector * crearVector(int n) {
-   Vector* vector =  (Vector*) calloc(n, sizeof(Vector));
+Vector * crearVector(int n){
+
+  Vector* vector =  (Vector*) calloc(n, sizeof(Vector));
 
   vector->capacidad = n;
 
   vector->datos = (int*) calloc(n, sizeof(int));
 
-   return vector;
+  return vector;
+
 }
 
 /*
@@ -94,8 +101,10 @@ Ejercicio 5a.
 Programe la función void asignarValor(Vector * v, int i, int valor), 
 la cual asigna el valor a la posición i del vector v.
 */
-void asignarValor(Vector * v, int i, int valor) {
-   v->datos[i] = valor;
+void asignarValor(Vector * v, int i, int valor){
+
+  v->datos[i] = valor;
+
 }
 
 /*
@@ -103,8 +112,10 @@ Ejercicio 6.
 Programe la función int obtenerValor(Vector * v, int i), 
 la cual retorna el valor en la posición i del vector v.
 */
-int obtenerValor(Vector * v, int i) {
-   return v->datos[i];
+int obtenerValor(Vector * v, int i){
+
+  return v->datos[i];
+
 }
 
 /*
@@ -116,12 +127,12 @@ void sumaV(Vector * a, Vector * b, Vector * c){
 
   int i;
 
-  for(i = 0; i < a->capacidad; i++)
-  {
+  for(i = 0; i < a->capacidad; i++){
 
     c->datos[i] = a->datos[i] + b->datos[i];
 
   }
+
 }
 
 /*
